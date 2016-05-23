@@ -1,0 +1,28 @@
+{% extends "TeamBuilderCovoiturageBundle::layout.html.twig" %}
+
+{% block Erasebody %}
+<link rel="stylesheet" href="{{asset('bundles/faq/css/screen.css')}}" type="text/css" />
+
+<div id="content-outer">
+<!-- start content -->
+<div id="content">
+
+	<!--  start page-heading -->
+	<div id="page-heading">
+		<h1>Comment faire ?</h1>
+	</div>
+	<!-- end page-heading -->
+	
+	{% for faq in faqs %}
+		<h2>{{faq.objet}}</h2>
+		<div>{{faq.contenu}}</div>
+		<br/>
+		<br/>
+	{% endfor %}
+
+</div>
+<!--  end content -->
+<div class="clear">&nbsp;</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+test_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: TestBundle:Default:index }
+   
+AfficheTrajetBydepart:
+    pattern:  /afficheTrajetByDepart
+    defaults: { _controller: TestBundle:Home:AfficheTrajetByDepart }    
+    
+afficheTrajet:
+    pattern:  /afficheTrajet
+    defaults: { _controller: TestBundle:Home:afficheTrajet }       
+    
+reserver:
+    pattern:  /reserver
+    defaults: { _controller: TestBundle:Home:reserver }           
+   
+Ajoutreserver:
+    pattern:  /reserver/{idConducteur}/{idTrajet}
+    defaults: { _controller: TestBundle:Home:ajoutReservation }      
+  
+afficheReservationCourrantes:
+    pattern:  /afficheReservationCourrantes
+    defaults: { _controller: TestBundle:Home:afficheReservationCourrantes }  
+    
+AfficheDetailsReservationsCourrantes:  
+    pattern:  /AfficheDetailsReservationsCourrantes
+    defaults: { _controller: TestBundle:Home:AfficheDetailsReservationsCourrantes }  
+    
+deleteReservation:    
+    pattern:  /afficheReservationCourrantes/{idReservation}/{idTrajet}
+    defaults: { _controller: TestBundle:Home:deleteReservation }
+    
+AfficheReservationsAnciennes:  
+    pattern:  /AfficheReservationsAnciennes
+    defaults: { _controller: TestBundle:Home:AfficheReservtionAnciennes }  
+
+AfficheDetailsReservationsAnciennes:  
+    pattern:  /AfficheDetailsReservationsAnciennes
+    defaults: { _controller: TestBundle:Home:AfficheDetailsReservationsAnciennes }  
+            
+ErreurDeReservation:
+    pattern:  /ErreurDeReservation
+    defaults: { _controller: TestBundle:Home:ErreurDeReservation } 
+
+Retour:
+    pattern:  /afficheTrajet
+    defaults: { _controller: TestBundle:Home:retour }     

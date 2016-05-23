@@ -1,0 +1,712 @@
+{# empty Twig template #}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+	<head
+            
+		<title></title>
+		<link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		</script>
+		<script src="{{asset('js/jquery.min.js')}}"></script>
+                
+		<!---script---->
+                
+		<link rel="stylesheet" href="{{asset('css/jquery.bxslider.css')}}" type="text/css" />
+		<link rel="stylesheet" href="{{asset('css/styletab.css')}}" type="text/css" />
+		<script src="{{asset('js/jquery.bxslider.js')}}"></script>
+			<script type="text/javascript">
+				var admin=false;
+                                $(document).ready(function(){
+					$('.bxslider').bxSlider({
+						 auto: true,
+ 						 autoControls: true,
+						 minSlides: 4,
+						 maxSlides: 4,
+						 slideWidth:450,
+						 slideMargin: 10
+					});
+                                        
+                                        if(admin==true){
+                                        $('#admin-panel').hide();
+                                        $('#onglet-admin').hide();
+                                              }
+				});
+			</script>
+		<!---//script---->
+		<!---smoth-scrlling---->
+			<script type="text/javascript">
+				$(document).ready(function(){
+									$('a[href^="#"]').on('click',function (e) {
+									    e.preventDefault();
+									    var target = this.hash,
+									    $target = $(target);
+									    $('html, body').stop().animate({
+									        'scrollTop': $target.offset().top
+									    }, 1000, 'swing', function () {
+									        window.location.hash = target;
+									    });
+									});
+								});
+				</script>
+		<!---//smoth-scrlling---->
+		<!----start-top-nav-script---->
+		<script type="text/javascript" src="{{asset('js/flexy-menu.js')}}"></script>
+		<script type="text/javascript">$(document).ready(function(){$(".flexy-menu").flexymenu({speed: 400,type: "horizontal",align: "right"});});</script>
+		<!----//End-top-nav-script---->
+		<!---webfonts---->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+		<!---webfonts---->
+		<!--start slider -->
+                
+	    <link rel="stylesheet" href="{{asset('css/fwslider.css')}}" media="all">
+            
+		<script src="{{asset('js/jquery-ui.min.js')}}"></script>
+		<script src="{{asset('js/css3-mediaqueries.js')}}"></script>
+		<script src="{{asset('js/fwslider.js')}}"></script>
+		<!--end slider -->
+		
+                <!---calender-style---->
+                <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}" />
+		<!---//calender-style---->
+	</head>
+	<body>
+		<!----start-wrap---->
+			<!----start-top-header----->
+			<div class="top-header" id="header">
+				<div class="wrap">
+				<div class="top-header-left">
+					<ul>
+						{% if app.user is null %}
+                                                <li><a href="{{path('fos_user_security_login')}}"><span> </span>Login</a></li>
+						<li><p><span> </span>Pas Encore Membre ? </p>&nbsp;<a class="reg" href="{{ path('fos_user_registration_register') }}"> S'enregistrer</a></li>
+						{% endif %}
+                                                <li>
+                                                    <p class="contact-info">
+                                                        Telephone : +216 98 329 320 
+                                                        {% if app.user is not null %}
+                                                         | Connecté en tant que {{ app.user.username}} |
+                                                         <a href="{{path('fos_user_security_logout')}}">déconnexion</a>
+                                                        {% endif %}
+                                                    </p>
+                                                </li>
+						<div class="clear"> </div>
+					</ul>
+				</div>
+				<div class="top-header-right">
+					<ul>
+						<li><a class="face" href="http://www.facebook.com"><span> </span></a></li>
+						<li><a class="twit" href="http://www.twitter.com"><span> </span></a></li>
+						<div class="clear"> </div>
+					</ul>
+				</div>
+				<div class="clear"> </div>
+			</div>
+			</div>
+			<!----//End-top-header----->
+			<!---start-header---->
+			<div class="header">
+				<div class="wrap">
+				<!--- start-logo---->
+				<div class="logo">
+                                    <a href="{{path('Home')}}"><img src="{{asset('images/logo.png')}}" title="voyage" /></a>
+				</div>
+				<!--- //End-logo---->
+				<!--- start-top-nav---->
+				<div class="top-nav">
+						<ul class="flexy-menu thick orange">
+                                                        {#
+							<li class="active"><a href="{{path("Home")}}">Home</a></li>
+                                                         #}
+							{% if app.user is not null %}
+                                                        
+                                                        <li><a href="{{path("fos_user_profile_show")}}">Profil</a></li>
+                                                         <li><a href="{{path("team_builder_covoiturage_ajoutertrajet")}}">Publier trajet</a></li>
+                                                   	<li><a href="{{path("afficheTrajet")}}">Trouver un trajet</a></li>
+							
+                                                         <li><a href="#">Trajets/Reservations</a>
+                                                         <ul>
+							  <li><a href="#">Trajets</a>
+									<ul>
+										<li><a href="{{path("team_builder_covoiturage_mesroutes")}}">Mes Trajets courants</a></li>
+										<li><a href="{{path("team_builder_covoiturage_archiveroutes")}}">Anciens Trajets</a>
+											</ul>
+										</li>
+								<li><a href="#">Reservations</a>
+									<ul>
+										<li><a href="{{path("afficheReservationCourrantes")}}">Mes Rerservations courantes</a></li>
+										<li><a href="{{path("AfficheReservationsAnciennes")}}">Anciennes Reservation</a>
+											</ul>
+										</li>
+							</ul>
+                                                        </li>
+                                                        {% if app.user is not null and is_granted('ROLE_ADHERANT') %}
+                                                         <li><a href="{{path("team_builder_covoiturage_contact")}}">Contact</a></li>
+                                                                                                                  {% endif %}
+
+                                                        {% endif %}
+                                                        
+						           {% if app.user is not null and is_granted('ROLE_ADMIN') %}
+							 <li><a href="http://127.0.0.1/voyage/web/app_dev.php/home#admin-panel">Admin</a></li>
+                                                         {% endif %}
+
+                                                
+                                                </ul>
+						
+                                    
+                                            <div class="search-box">
+							<div id="sb-search" class="sb-search">
+								<form>
+									<input class="sb-search-input" placeholder="Entrer ce que vous chercher..." type="search" name="search" id="search">
+									<input class="sb-search-submit" type="submit" value="">
+									<span class="sb-icon-search"> </span>
+								</form>
+							</div>
+						</div>
+						<!----search-scripts---->
+                                                
+						<script src="{{asset('js/modernizr.custom.js')}}"></script>
+						<script src="{{asset('js/classie.js')}}"></script>
+						<script src="{{asset('js/uisearch.js')}}"></script>
+						<script>
+							new UISearch( document.getElementById( 'sb-search' ) );
+						</script>
+						<!----//search-scripts---->
+				</div>
+				<!--- //End-top-nav---->
+				<div class="clear"> </div>
+			</div>
+			<!---//End-header---->
+		</div>
+		
+                        
+                        
+<div>       
+{%block Erasebody%} 
+                        
+                 <!----start-images-slider---->
+		<div class="images-slider">
+			<!-- start slider -->
+		    <div id="fwslider">
+		        <div class="slider_container">
+		            <div class="slide"> 
+		                <!-- Slide image -->
+                                <img src="{{asset('images/slider-bg.jpg')}}" alt=""/>
+		                <!-- /Slide image -->
+		                <!-- Texts container -->
+		                <div class="slide_content">
+		                    <div class="slide_content_wrap">
+		                        <!-- Text title -->
+		                        <h4 class="title">Votre Destination... à portée de main</h4>
+		                        <!-- /Text title -->
+		                        <!-- Text description -->
+		                        <p class="description">Si Vous êtes ici ... C'est que Vous faites le bon choix</p>
+		                        <!-- /Text description -->
+		                        <div class="slide-btns description">
+		                        	<ul>
+		                        		<li><a class="mapbtn" href="#reservation">Reserver Maintenant </a></li>
+		                        		<li><a class="minfo" href="{{path('faq_list_for_adh')}}">Comment ca se passe ?</a></li>
+		                        		<div class="clear"> </div>
+		                        	</ul>
+		                        </div>
+		                    </div>
+		                </div>
+		                 <!-- /Texts container -->
+		            </div>
+		            <!-- /Duplicate to create more slides -->
+		            <div class="slide">
+                                <img src="{{asset('images/slider-bg.jpg')}}" alt=""/>
+		                <div class="slide_content">
+		                     <div class="slide_content_wrap">
+		                        <!-- Text title -->
+		                        <h4 class="title">Faites en Partie ... Publiez Votre Annonce</h4>
+		                        <!-- /Text title -->
+		                        <!-- Text description -->
+		                        <p class="description"></p>
+		                        <!-- /Text description -->
+		                        <div class="slide-btns description">
+		                        	<ul>
+		                        		<li><a class="mapbtn" href="#">Publier Une Annonce </a></li>
+		                        			<div class="clear"> </div>
+		                        	</ul>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+                            
+                            
+                            
+                            <div class="slide">
+                                <img src="{{asset('images/slider-bg.jpg')}}" alt=""/>
+		                <div class="slide_content">
+		                     <div class="slide_content_wrap">
+		                        <!-- Text title -->
+		                        <h4 class="title">Une Demande?... Une Reclamation?</h4>
+		                        <!-- /Text title -->
+		                        <!-- Text description -->
+		                        <p class="description">Tous vos Feedback sont les Bienvenus</p>
+		                        <!-- /Text description -->
+		                        <div class="slide-btns description">
+		                        	<ul>
+		                        		<li><a class="mapbtn" href="{{path("team_builder_covoiturage_contact")}}">Contacter Nous !</a></li>
+		                        		<div class="clear"> </div>
+		                        	</ul>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+                            
+                            
+                            
+                            
+                            
+		            <!--/slide -->
+		        </div>
+		        <div class="timers"> </div>
+		        <div class="slidePrev"><span> </span></div>
+		        <div class="slideNext"><span> </span></div>
+		    </div>
+		    <!--/slider -->
+		</div>
+		<!----start-find-place---->
+		<div class="find-place">
+			<div class="wrap">
+				<div class="p-h">
+					<span>Trouvez</span>
+					<label>Votre Trajet</label>
+				</div>
+				<!---strat-date-piker---->
+				  <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+				
+                                  
+                                  
+                                  
+                                  
+                                  
+<script src="{{asset('js/jquery-ui-1.10.4.custom.min.js')}}"></script>
+                     
+<link href="{{asset('css/jquery-ui-1.10.4.custom.css')}}" rel="stylesheet">
+                    
+               <link href="{{asset('css/jquery-ui.css')}}" rel="stylesheet" title='numberOne'>
+
+                                  
+                                  <script>
+				  $(function() {
+				    $( "#datepicker" ).datepicker({
+                                   dateFormat : 'yy-'+'mm'+'-dd',
+	                            minDate : 0,  
+                                    });
+				  });
+                                  
+                                  
+                                 var availableTags = ["Ariana","Tunis","Sfax","Grombalia","Nabeul","Sousse","Gafsa","Gabes","Hammam-lif","Monastir","Douz","Tabarka","Beja"];
+
+    $(function($) {
+		
+		$( "#villedepart1" ).autocomplete({
+			source: availableTags
+		});
+		
+
+		
+// Hover states on the static widgets
+		$( "#dialog-link, #icons li" ).hover(
+			function($) {
+				$( this ).addClass( "ui-state-hover" );
+			},
+			function($) {
+				$( this ).removeClass( "ui-state-hover" );
+			}
+		);
+	});
+		
+                
+                
+                                         $(function($) {
+      
+              		$( "#villedestination1" ).autocomplete({
+			source: availableTags
+		});
+		
+
+		
+// Hover states on the static widgets
+		$( "#dialog-link, #icons li" ).hover(
+			function($) {
+				$( this ).addClass( "ui-state-hover" );
+			},
+			function($) {
+				$( this ).removeClass( "ui-state-hover" );
+			}
+		);
+	});
+                
+                 
+                                  
+                                  
+                                  
+				  </script>
+				<!---/End-date-piker---->
+				<div class="p-ww" id='reservation'>
+					<form action={{path('afficheTrajet')}}>
+						<span> Depart :</span>
+						<input id='villedepart1' class="dest" type="text" value="Ville Depart" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Distination';}">
+                                                
+                                                <span> Destination :</span>
+						<input id='villedestination1'class="dest" type="text" value="Ville Arrivee" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Distination';}">
+                                               
+                                                <span>Date :</span>
+						<input class="date" id="datepicker" type="text" value="Select date" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Select date';}">
+						<input type="submit" value="Rechercher" />
+					</form>
+				</div>
+				<div class="clear"> </div>
+			</div>
+		</div>
+		<!----//End-find-place---->
+		<!----start-offers---->
+		<div class="offers">
+			<div class="offers-head">
+				<h3>Top Destinations de Trajets</h3>
+				<p></p>
+			</div>
+			<!-- start content_slider -->
+			<!-- FlexSlider -->
+			 <!-- jQuery -->
+                         <link rel="stylesheet" href="{{asset('css/flexslider.css')}}" type="text/css" media="screen" />
+			  <!-- FlexSlider -->
+                          
+			  <script defer src="{{asset('js/jquery.flexslider.js')}}"></script>
+			  <script type="text/javascript">
+			    $(function(){
+			      SyntaxHighlighter.all();
+			    });
+			    $(window).load(function(){
+			      $('.flexslider').flexslider({
+			        animation: "slide",
+			        animationLoop: true,
+			        itemWidth:250,
+			        itemMargin: 5,
+			        start: function(slider){
+			          $('body').removeClass('loading');
+			        }
+			      });
+			    });
+			  </script>
+			<!-- Place somewhere in the <body> of your page -->
+				 <section class="slider">
+              <!-- //End content_slider -->
+              
+              
+              <!-- start content_slider -->
+			<!-- FlexSlider -->
+			 <!-- jQuery -->
+                         <link rel="stylesheet" href="{{asset('css/flexslider.css')}}" type="text/css" media="screen" />
+			  <!-- FlexSlider -->
+                          
+			  <script defer src="{{asset('js/jquery.flexslider.js')}}"></script>
+			  <script type="text/javascript">
+			    $(function(){
+			      SyntaxHighlighter.all();
+			    });
+			    $(window).load(function(){
+			      $('.flexslider').flexslider({
+			        animation: "slide",
+			        animationLoop: true,
+			        itemWidth:250,
+			        itemMargin: 5,
+			        start: function(slider){
+			          $('body').removeClass('loading');
+			        }
+			      });
+			    });
+			  </script>
+			<!-- Place somewhere in the <body> of your page -->
+				 <section class="slider">
+		        <div class="flexslider carousel">
+		          <ul class="slides">
+		            
+                          
+                          
+                          
+                          <li onclick="location.href={{path('Reclamation_liste')}}">
+		  	    	    <img src="{{asset('images/hammamet.jpg')}}"  height="200px" width="200px"/>
+		  	    	    <!----place-caption-info---->
+		  	    	    <div class="caption-info">
+		  	    	    	 <div class="caption-info-head">
+		  	    	    	 	<div class="caption-info-head-left">
+			  	    	    	 	<h4><a href="{{path('AfficheTrajetBydepart')}}">Hammamet</a></h4>
+			  	    	    	 	<span>  voir Trajets</span>
+
+		  	    	    	 	</div>
+		  	    	    	 	<div class="caption-info-head-right">
+		  	    	 <span> </span>
+                                         	</div>
+		  	    	    	 	<div class="clear"> </div>
+		  	    	    	 </div>
+		  	    	    </div>
+		  	    	     <!----//place-caption-info---->
+		  	    		</li>
+		  	    
+                                        
+                                         <li onclick="location.href='#';">
+		  	    	    <img src="{{asset('images/nabeul.jpg')}}" height="200px" width="200px"  />
+		  	    	    <!----place-caption-info---->
+		  	    	    <div class="caption-info">
+		  	    	    	 <div class="caption-info-head">
+		  	    	    	 	<div class="caption-info-head-left">
+			  	    	    	 	<h4><a href="{{path('AfficheTrajetBydepart')}}">Nabeul</a></h4>
+                                                    <span>  voir Trajets</span>
+		  	    	    	
+                                                </div>
+		  	    	    	 	<div class="caption-info-head-right">
+		  	    	    	 		<span> </span>
+		  	    	    	 	</div>
+		  	    	    	 	<div class="clear"> </div>
+		  	    	    	 </div>
+		  	    	    </div>
+		  	    	     <!----//place-caption-info---->
+		  	    		</li>
+		  	    
+                                        
+                                         <li onclick="location.href='#';">
+		  	    	    <img src="{{asset('images/sfax.jpg')}}" height="200px" width="200px"  />
+		  	    	    <!----place-caption-info---->
+		  	    	    <div class="caption-info">
+		  	    	    	 <div class="caption-info-head">
+		  	    	    	 	<div class="caption-info-head-left">
+			  	    	    	 	<h4><a href="{{path('AfficheTrajetBydepart')}}">Sfax</a></h4>
+		  	    	    	 	<span>  voir Trajets</span>
+
+                                                </div>
+		  	    	    	 	<div class="caption-info-head-right">
+		  	    	    	 		<span> </span>
+		  	    	    	 	</div>
+		  	    	    	 	<div class="clear"> </div>
+		  	    	    	 </div>
+		  	    	    </div>
+		  	    	     <!----//place-caption-info---->
+		  	    		</li>
+		  	    
+                                        
+                                   <li onclick="location.href='#';">
+		  	    	    <img src="{{asset('images/sousse.jpg')}}" height="200px" width="200px" />
+		  	    	    <!----place-caption-info---->
+		  	    	    <div class="caption-info">
+		  	    	    	 <div class="caption-info-head">
+		  	    	    	 	<div class="caption-info-head-left">
+			  	    	    	 	<h4><a href="{{path('AfficheTrajetBydepart')}}">Sousse</a></h4>
+		  	    	    	 	<span>voir Trajets</span>
+                                                </div>
+		  	    	    	 	<div class="caption-info-head-right">
+		  	    	    	 		<span> </span>
+		  	    	    	 	</div>
+		  	    	    	 	<div class="clear"> </div>
+		  	    	    	 </div>
+		  	    	    </div>
+		  	    	     <!----//place-caption-info---->
+		  	    		</li>
+		  	     <li onclick="location.href='#';">
+		  	    	    <img src="{{asset('images/tunis.jpg')}}" height="200px" width="200px" />
+		  	    	    <!----place-caption-info---->
+		  	    	    <div class="caption-info">
+		  	    	    	 <div class="caption-info-head">
+		  	    	    	 	<div class="caption-info-head-left">
+			  	    	    	 	<h4><a href="#">Tunis</a></h4>
+		  	    	    	 	<span>  voir Trajets</span>
+
+                                                
+                                                </div>
+		  	    	    	 	<div class="caption-info-head-right">
+		  	    	    	 		<span> </span>
+		  	    	    	 	</div>
+		  	    	    	 	<div class="clear"> </div>
+		  	    	    	 </div>
+		  	    	    </div>
+		  	    	     <!----//place-caption-info---->
+		  	    		</li>
+		  	          
+                                        
+                          
+                          
+                          </ul>
+		        </div>
+		      </section>
+              <!-- //End content_slider -->
+              
+              
+		</div>
+		<!----//End-offers---->
+                {% if app.user is not null and is_granted('ROLE_ADMIN') %}
+                {# 
+
+
+                #}
+		<!---start-holiday-types---->
+			<div class="holiday-types" id="admin-panel">
+				<div class="wrap">
+					<div class="holiday-type-head">
+						<h3>Panneau D'administration</h3>
+						<span></span>
+					</div>
+                                    
+                                    
+					<div class="holiday-type-grids">
+					
+                                            
+                                               <div class="holiday-type-grid" onclick="location.href='#';">
+							<img>
+                                                              <a href="#"></a>
+						</div>
+                                            
+				   <div class="holiday-type-grid" onclick="location.href={{path('Reclamation_liste')}}">
+							<img  src="{{asset('images/arrow.png')}}">
+                                                              <a href="{{path('Reclamation_liste')}}">Reclamation</a>
+						</div>
+                                            
+						<div class="holiday-type-grid" onclick="location.href={{ path('stat_list') }}">
+						 <img  src='{{asset('images/arrow.png')}}' >
+						  <a href="{{ path('stat_list') }}">
+						  Statistique
+						  </a>
+						</div>
+                                         
+                                            	<div class="holiday-type-grid" onclick="location.href='#';">
+							<img  src='{{asset('images/arrow.png')}}' onclick="location.href='#';">
+                                                              <a href="{{path('faq_list')}}">   FAQ    </a>
+						</div>
+                                         	<div class="holiday-type-grid" onclick="location.href='#';">
+							<img  src='{{asset('images/arrow.png')}}' onclick="location.href='#';">
+                                                              <a href="{{path('team_builder_covoiturage_notifier')}}">Prevention Conducteur</a>
+						</div>
+                                         	<div class="holiday-type-grid" onclick="location.href='#';">
+							<img  src='{{asset('images/arrow.png')}}' onclick="location.href='#';">
+                                                              <a href="{{path('contact')}}">Contact Admin</a>
+						</div>
+                                            
+                                            
+                                            
+                                            
+					</div>
+				                                        
+                                            
+                                </div>
+                         </div>
+                            
+                           
+                            
+
+                  
+                            
+                <!---//End-holiday-types---->
+                {% endif %}
+		<!----//End-images-slider---->
+		<!----start-clients---->
+		<div class="clients">
+			<div class="client-head">
+				<h3>Covoiturage Tunisie</h3>
+				<span>Nous en quelques Mots </span>
+			</div>
+			<div class="client-grids">
+				<ul class="bxslider">
+				  <li>
+				      <a href="#">Pratique</a>
+                                      <p>Pour le week-end ou les vacances :Trouvez votre conducteur en quelques clics.</p>
+				      <label> </label>
+				  </li>
+				  <li>
+                                        <a href="#">Economique</a>
+				  	<p>Voyager à petits prix en Tunisie et bientot dans toute l'Afrique.</p>
+				  	<label> </label>
+				  </li>
+				  <li>
+                                       <a href="#">Fiable</a>
+				  	<p>Grace à la reservation,conducteurs et passagers s'engagent à effectuer le trajet ensemble.</p>
+				  	
+				  	<label> </label>
+				  </li>
+				  <li>
+                                        <a href="#">Ecologique</a>
+				  	<p>Avec le covoiturage,         </p>
+                                        <p>je protege ma planete.       </p>
+				  	
+				  	<label> </label>
+				  </li>
+				  
+				</ul>
+			</div>
+		</div>
+		<!----//End-clients---->
+		
+                
+    
+{%endblock%}</div>            
+                
+        		<!----// END Container Body ---->
+        {% block Erasefooter %}
+          <!----start-footer---->
+		<div class="footer">
+			<div class="wrap">
+			<div class="footer-grids">
+			
+			
+				<div class="footer-grid tags">
+					<h3>Tags</h3>
+					<ul>
+						<li><a href="#">Agent login</a></li>
+						<li><a href="#">Pas Encore Membre?</a></li>
+						<li><a href="#">Contact</a></li>
+                                                <li><a href="#">Trajets</a></li>
+                                                <li><a href="#">Reserver</a></li>
+                                                
+							
+                                                <div class="clear"> </div>
+					</ul>
+				</div>
+				<div class="footer-grid address">
+					<h3>Addresse </h3>
+					<div class="address-info">
+						<span>Z.I. Chotrana II - B.P. 160 - </span>
+						<span>2083 Pôle Technologique - El Ghazala</span><br>
+						<span><i>E-mail:</i><a href="mailto:Teambuilder@gmail.com">Teambuilder@gmail.com</a></span>
+					</div>
+					<div class="footer-social-icons">
+						<ul>
+							<li><a class="face1 simptip-position-bottom simptip-movable" data-tooltip="facebook" href="http://www.facebook.com"><span> </span></a></li>
+							<li><a class="twit1 simptip-position-bottom simptip-movable" data-tooltip="twitter" href="http://www.twitter.com"><span> </span></a></li>
+							<div class="clear"> </div>
+						</ul>
+					</div>
+				</div>
+				<div class="clear"> </div>
+			</div>
+			</div>
+		</div>
+		<!----//End-footer---->
+		<!---start-subfooter---->
+		<div class="subfooter">
+			<div class="wrap">
+				<ul>
+					<li><a href="">Home</a><span>::</span></li>
+					<li><a href="">Destinations</a><span>::</span></li>
+					<li><a href="">Contact</a></li>
+					<div class="clear"> </div>
+				</ul>
+				<p class="copy-right">Template by <a href="http://w3layouts.com/">W3layouts</a></p>
+				<a class="to-top" href="#header"><span> </span> </a>
+			</div>
+		</div>
+		<!---//End-subfooter---->
+		<!----//End-wrap---->
+
+        {%endblock%}    
+        
+        </body>
+</html>
+

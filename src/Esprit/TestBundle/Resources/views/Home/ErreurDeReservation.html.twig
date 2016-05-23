@@ -1,0 +1,14 @@
+{# empty Twig template #}
+{% extends "TestBundle::layout.html.twig"  %}
+{% block Erasebody %}
+Vous avez deja reserver mesieur
+
+ <form action=" {{ path('Retour') }} ">
+    
+     <input class= "sub" type="submit" value="Retour">
+    
+</form>
+
+{%endblock%}
+{% block Erasefooter %}
+    {%endblock%}   

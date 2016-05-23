@@ -1,0 +1,266 @@
+{# empty Twig template #}
+
+{% extends "TeamBuilderCovoiturageBundle::layout.html.twig"%}
+
+
+{%block Erasebody%} 
+
+
+<style>
+ 
+    .styleTable a:link {
+	color: #666;
+	font-weight: bold;
+	text-decoration:none;
+}
+.styleTable a:visited {
+	color: #999999;
+	font-weight:bold;
+	text-decoration:none;
+}
+.styleTable a:active,
+.styleTable a:hover {
+	color: #bd5a35;
+	text-decoration:underline;
+}
+.styleTable {
+	font-family:Arial, Helvetica, sans-serif;
+	color:#666;
+	font-size:15px;
+	text-shadow: 1px 1px 0px #fff;
+	background:#eaebec;
+	margin:20px;
+	border:#ccc 1px solid;
+
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+
+	-moz-box-shadow: 0 1px 2px #d1d1d1;
+	-webkit-box-shadow: 0 1px 2px #d1d1d1;
+	box-shadow: 0 1px 2px #d1d1d1;
+     
+                
+
+}
+.styleTable th {
+/*	
+    padding:21px 25px 22px 25px;
+	border-top:1px solid #fafafa;
+	border-bottom:1px solid #e0e0e0;
+
+	background: #ededed;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+	background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+        
+  */
+  
+padding: 21px 25px 22px 25px;
+border-top: 1px solid #fafafa;
+border-bottom: 1px solid #e0e0e0;
+background: #2C3E50;
+/* background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb)); */
+background: -moz-linear-gradient(top, #ededed, #ebebeb);
+        
+        
+        
+        
+        
+}
+.styleTable th:first-child {
+	text-align: left;
+	padding-left:20px;
+}
+.styleTable tr:first-child th:first-child {
+	-moz-border-radius-topleft:3px;
+	-webkit-border-top-left-radius:3px;
+	border-top-left-radius:3px;
+        
+        
+}
+.styleTable tr:first-child th:last-child {
+	-moz-border-radius-topright:3px;
+	-webkit-border-top-right-radius:3px;
+	border-top-right-radius:3px;
+}
+.styleTable tr {
+	text-align: center;
+	padding-left:20px;
+}
+.styleTable td:first-child {
+	text-align: left;
+	padding-left:20px;
+	border-left: 0;
+        
+  
+        
+        
+}
+.styleTable td {
+	padding:18px;
+	border-top: 1px solid #ffffff;
+	border-bottom:1px solid #e0e0e0;
+	border-left: 1px solid #e0e0e0;
+
+	background: #fafafa;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+	background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
+
+}
+.styleTable tr.even td {
+	background: #f6f6f6;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
+	background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
+
+       
+}
+.styleTable tr:last-child td {
+	border-bottom:0;
+        border-left: 1px solid #e0e0e0;
+ 
+
+}
+.styleTable tr:last-child td:first-child {
+	-moz-border-radius-bottomleft:3px;
+	-webkit-border-bottom-left-radius:3px;
+	border-bottom-left-radius:3px;
+}
+.styleTable tr:last-child td:last-child {
+	-moz-border-radius-bottomright:3px;
+	-webkit-border-bottom-right-radius:3px;
+	border-bottom-right-radius:3px;
+}
+.styleTable tr:hover td {
+	background: #f2f2f2;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+	background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);	
+}
+</style>
+
+
+<style>
+    
+    .buttonAnnuler {
+background: #c0392b;
+color: #FFF;
+padding: .9em 3em;
+display: inline-block;
+text-transform: uppercase;
+transition: 0.5s all;
+-webkit-transition: 0.5s all;
+-moz-transition: 0.5s all;
+-o-transition: 0.5s all;
+border-radius: 0.3em;
+-webkit-border-radius: 0.3em;
+-moz-border-radius: 0.3em;
+-o-border-radius: 0.3em;
+font-size: 0.875em;
+border-top: none;
+border-right: none;
+border-left: none;
+border-bottom: 4px solid #2A323A;
+outline: none;
+cursor: pointer;
+font-family: 'Open Sans', sans-serif;
+}
+
+
+
+    .buttonOK {
+background: #2ecc71;
+color: #FFF;
+padding: .9em 3em;
+display: inline-block;
+text-transform: uppercase;
+transition: 0.5s all;
+-webkit-transition: 0.5s all;
+-moz-transition: 0.5s all;
+-o-transition: 0.5s all;
+border-radius: 0.3em;
+-webkit-border-radius: 0.3em;
+-moz-border-radius: 0.3em;
+-o-border-radius: 0.3em;
+font-size: 0.875em;
+border-top: none;
+border-right: none;
+border-left: none;
+border-bottom: 4px solid #2A323A;
+outline: none;
+cursor: pointer;
+font-family: 'Open Sans', sans-serif;
+}
+
+
+
+    </style>
+<script>
+    
+    $(document).ready(function(){
+    $('#confirmSuppression').click(function(){
+        var answer = confirm("Etes Vous Sur de Vouloir Confirmer la suppresion Du Trajet?");
+        if (answer){
+            return true;
+        } else {
+            return false;
+        }
+    });
+});
+    
+    </script>
+    
+<table class='styleTable'>
+    <tr>
+        
+    <th>  Ville Depart </th>
+    <th>  Ville Destination </th>
+    <th>  Date Depart </th>
+    <th>  Heure Depart  </th>
+    <th>  Frequence </th>
+    <th>  Type Trajet </th>
+    <th>  Bagages </th>  
+    <th>  Kilometrage </th>  
+    <th>  Prix </th>
+     <th> Options </th>
+    
+    
+    
+    </tr>
+{%for t in trajets%}
+
+
+
+ <tr>
+    
+    
+    
+    <td>{{t.villeDepart}}</td>
+    <td>{{t.villeArrivee}}</td>
+    <td>{{t.jours| date('d-m-Y')}}</td>
+    <td>{{t.heure}}</td>
+    <td>{{t.frequence}}</td>
+    <td>{{t.typeTrajet}}</td>
+    <td>{{t.bagages}}</td>
+    <td>{{t.kilometrage}}</td>
+    <td>{{t.prix}} DT</td>
+    
+    
+    <td> <form action='{{path('team_builder_covoiturage_annuler',{idTrajet:t.idTrajet} )}}'> <span><input type="submit" id='confirm' class="buttonOK" value="Modifier" align='center'>
+            </span></form> 
+    
+     <form action='{{path('team_builder_covoiturage_annuler',{idTrajet:t.idTrajet }  )}}'> <span><input type="submit" id='confirmSuppression' class="buttonAnnuler" value="Annuler" align='center'>
+            </span></form>
+    
+    </td>
+        
+        
+        </tr>
+    
+   {%endfor%}
+ 
+</table>
+
+
+
+
+{%endblock%}
+

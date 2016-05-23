@@ -1,0 +1,136 @@
+team_builder_covoiturage_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Default:index }
+Home:
+    pattern: /home
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Default:home }
+Essai:
+    pattern:  /hello/{name}
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Default:index }
+Reclamation_ajouter:
+    pattern:  /ajouter
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Reclamation:ajouter }
+Adherent_ajouter:
+    pattern:  /Aajouter
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Adherent:ajouter }
+Reclamation_liste:
+    pattern:  /allReclamation
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Reclamation:liste}
+
+# routes FAQ ----------------------------------------------------
+
+faq_list_for_adh:
+    pattern:  /foire-aux-questions
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Faq:listAdh }
+
+faq_list:
+    pattern:  /faq/list
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Faq:list }
+
+faq_ajouter:
+    pattern:  /faq/ajouter
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Faq:ajouter }
+
+faq_modifier:
+    pattern:  /faq/modifier/{id}/
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Faq:modifier }
+
+faq_supprimer:
+    pattern:  /faq/supprimer/{id}/
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Faq:supprimer }
+
+
+
+#--------------------------------------------------------------
+
+team_builder_covoiturage_home:
+    pattern: /home
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Default:home }
+
+
+team_builder_covoiturage_contact:
+    pattern:  /contact
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Default:contact }
+    
+
+team_builder_covoiturage_affichertrajet:
+    pattern:  /affichertrajet1
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Default:affichertrajet }
+    
+    
+team_builder_covoiturage_ajoutertrajet:
+    pattern:  /ajoutertrajet
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Default:ajoutertrajet }
+
+team_builder_covoiturage_mesroutes:
+    pattern:  /mestrajets
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Default:affichertrajet }
+   
+team_builder_covoiturage_annuler:
+    pattern:  /delete/{idTrajet}/
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Default:annulerTrajet }
+    
+team_builder_covoiturage_archiveroutes:
+    pattern:  /archivetrajets
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Default:archivetrajet }
+
+
+team_builder_covoiturage_notifier:
+    pattern:  /notifieruser
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Default:envoyermail }
+
+#--------------------------------------------------------------
+
+
+Reclamation_ajouter:
+    pattern:  /ajouter
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Reclamation:ajouter }
+Adherent_ajouter:
+    pattern:  /Aajouter
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Adherent:ajouter }
+Reclamation_liste:
+    pattern:  /allReclamation
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Reclamation:liste}
+
+stat_list:
+    pattern:  /statistiques
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Evaluation:listStat}
+Evaluation_liste:
+    pattern:  /allEvaluation
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Evaluation:liste}
+
+contact:
+    pattern:  /contacts/
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Contact:contact}
+Statistiques_sexe:
+    pattern:  /statSexe
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Adherent:StatistiquesAdherents}
+Statistiques_age:
+    pattern:  /statAge
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Adherent:StatistiquesAdherentsAge}
+
+#--------------------------------------------------------------
+
+Reclamation_ajouter:
+    pattern:  /ajouterReclamation/{id}
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Reclamation:ajouter }
+Adherent_ajouter:
+    pattern:  /Aajouter
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Adherent:ajouter }
+Reclamation_liste:
+    pattern:  /allReclamation
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Reclamation:liste}
+Evaluation_ajouter:
+    pattern:  /ajouterEvaluation/{id}/
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Evaluation:ajouter }
+Reclamation_chart:
+    pattern: /reclamationChart/{id}
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Reclamation:stat }
+Reclamation_Conducteur:
+    pattern: /reclamerTrajet/{id}/
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Reclamation:reclamerTrajet }
+
+
+Adherent_Bloquer:
+    pattern: /bloquerAdherent/{id}/
+    defaults: { _controller: TeamBuilderCovoiturageBundle:Reclamation:bloquer }

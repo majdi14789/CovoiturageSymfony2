@@ -1,0 +1,49 @@
+{% extends "TeamBuilderCovoiturageBundle::layout.html.twig"%}
+
+{% block Erasebody %}
+
+<script src="{{asset('js/Chart.js')}}"></script>
+<div>
+<canvas id="canvas" height="450" width="450"> </canvas>
+<div id="lbl" Style="float: left; width: 50%; padding-top: 40px;">
+	<label Style="background:#1DD2AF; font-size: 10px ;"for="inp">&nbsp;&nbsp;&nbsp </label>&nbsp;&nbsp
+	<span>Le nombre de Femmes est :</span> &nbsp;&nbsp{{sadh.sex}}<br><br>
+	
+	<label Style="background:#2C3E50; font-size: 10px ;"for="inp">&nbsp;&nbsp;&nbsp </label>&nbsp;&nbsp
+	<span> Le nombre d'hommes est :</span> &nbsp;&nbsp;{{shadh.sex}}
+</div>	
+</div>
+    
+    <script>
+
+		var pieData = [
+		
+					{
+						value: {{sadh.sex}},
+						color:"#1DD2AF"
+					},
+					{
+						value: {{shadh.sex}},
+						color:"#2C3E50"
+					}
+			
+			];
+
+	var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
+	
+	</script>
+        
+        
+        
+	
+		
+
+ 
+<button onclick="history.back()" class="back_button">Retour</button>
+    
+{% endblock %}
+
+
+
+ {% block Erasefooter %}
+{%endblock%}

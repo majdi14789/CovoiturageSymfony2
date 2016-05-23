@@ -1,0 +1,3 @@
+covoiturage_user_homepage:
+    pattern:  /
+    defaults: { _controller: CovoiturageUserBundle:Default:index }

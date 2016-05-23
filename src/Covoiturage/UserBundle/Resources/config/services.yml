@@ -1,0 +1,7 @@
+parameters:
+#    covoiturage_user.example.class: Covoiturage\UserBundle\Example
+
+services:
+#    covoiturage_user.example:
+#        class: %covoiturage_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

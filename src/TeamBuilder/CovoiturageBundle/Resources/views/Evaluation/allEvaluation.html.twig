@@ -1,0 +1,88 @@
+{# empty Twig template #}
+
+{# empty Twig template #}
+{% extends "TeamBuilderCovoiturageBundle::layout.html.twig"%}
+
+{%block Erasebody%}
+<script src="{{asset('js/Chart.js')}}"></script>
+<meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
+		
+
+
+
+
+<canvas id="canvas" height="450" width="600"></canvas>
+
+
+	<script>
+
+		
+		
+		var doughnutData = [ 
+				
+				
+                                    {
+					value: {{evaluations[0].moy}},
+					color:"#F7464A"
+				},
+				{
+					value : {{evaluations[1].moy}},
+					color : "#46BFBD"
+				},
+                               {
+					value : {{evaluations[2].moy}},
+					color : "#008080"
+				}
+                                        
+					
+				
+			];
+                         
+var intmyDoughnut = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(doughnutData);
+	</script>
+        <div id="lbl" class="stat_legends">
+        <div id="lbl" class="stat_legend">
+            
+			<label Style="background:#F7464A; font-size: 10px ;"for="inp">&nbsp;&nbsp;&nbsp </label>&nbsp;&nbsp; 
+			<span style="font-weight: bold;">Le premier adhérent</span>&nbsp;&nbsp;
+			<span>{{evaluations[0].name}}&nbsp;&nbsp;&nbsp;&nbsp;{{evaluations[0].moy}}<span>
+
+			</br>
+			</br>
+
+			<label Style="background:#46BFBD; font-size: 10px ;"for="inp">&nbsp;&nbsp;&nbsp </label> &nbsp;&nbsp;
+			<span style="font-weight: bold;">Le deuxiéme adhérent</span>&nbsp;&nbsp;
+			<span>{{evaluations[1].name}}&nbsp;&nbsp;&nbsp;&nbsp;{{evaluations[1].moy}}<span>
+
+			</br>
+			</br>
+
+			<label Style="background:#008080; font-size: 10px ;"for="inp">&nbsp;&nbsp;&nbsp </label> &nbsp;&nbsp;
+			<span style="font-weight: bold;">Le troisiéme Adhérent</span>&nbsp;&nbsp;
+			<span>{{evaluations[2].name}}&nbsp;&nbsp;&nbsp;&nbsp;{{evaluations[2].moy}}<span>
+            
+        </div> 
+        
+        <table cellpadding="8" cellspacing="8" class="stat_table styleTable">
+            <caption id="bold"><span style="font-weight: bold;">EVALUATION</span></caption>
+                <tr >
+                    <th id="bold" style="background:#2C3E50"><span style="font-weight: bold;">Nom et Prénom</span></th>
+                    <th id="bold" style="background:#2C3E50"><span style="font-weight: bold;">Moyenne</span></th>
+               </tr>
+
+
+
+            {% for evaluation  in evaluations %}
+
+
+                      <td>{{evaluation.name}}</td>
+                      <td>{{evaluation.moy}}</td>
+
+            </tr>
+            {% endfor %}
+        </table>
+</div>
+       
+<button onclick="history.back()" class="back_button">Retour</button>
+
+{% endblock %}

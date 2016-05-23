@@ -1,0 +1,88 @@
+{# empty Twig template #}
+{# empty Twig template #}
+
+{% extends "TeamBuilderCovoiturageBundle::layout.html.twig"%}
+{%block Erasebody%} 
+<!---start-contact---->
+		<div class="contact">
+			
+				<div class="contact-info">
+					<div class="map">
+                                                    
+                                            
+                                            <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Tunis+Tunisia&amp;aq=4&amp;oq=light&amp;sll=36.818810000000000000,10.165960000000041000&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=tunis+Tunisia&amp;t=m&amp;z=8&amp;ll=36.818810000000000000,10.165960000000041000&amp;output=embed"></iframe>
+                                            
+					 </div>
+					 <div class="wrap">
+					 <div class="contact-grids">
+							 <div class="col_1_of_bottom span_1_of_first1">
+								    <h5>Addresse</h5>
+								    <ul class="list3">
+										<li>
+											<img src="{{asset('images/home.png')}}" alt="">
+											<div class="extra-wrap">
+											 <p>Z.I. Chotrana II - B.P. 160 - <br> 2083 Pôle Technologique - El Ghazala</p>
+											</div>
+										</li>
+									</ul>
+							    </div>
+								<div class="col_1_of_bottom span_1_of_first1">
+								    <h5>Telephones</h5>
+									<ul class="list3">
+										<li>
+											   <img src="{{asset('images/phone.png')}}" alt="">
+											<div class="extra-wrap">
+												<p><span>Telephone:</span>+216 99 999 999</p>
+											</div>
+												<img src="{{asset('images/fax.png')}}" alt="">
+											<div class="extra-wrap">
+												<p><span>FAX:</span>+216 999 999 99</p>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="col_1_of_bottom span_1_of_first1">
+									 <h5>Email</h5>
+								    <ul class="list3">
+										<li>
+											<img src="{{asset('images/email.png')}}" alt="">
+											<div class="extra-wrap">
+											  <p><span class="mail"><a href="mailto:teambuilder@gmail.com">teambuilder@gmail.com</a></span></p>
+											</div>
+										</li>
+									</ul>
+							    </div>
+								<div class="clear"></div>
+					 </div>
+					 	
+                                             <form method="post" action="{{path("team_builder_covoiturage_contact")}}">
+					          <div class="contact-form">
+								<div class="contact-to">
+          {{ form_widget(form_contact.name, {'attr': {'value':'Nom...','class': 'text','onfocus': 'if (this.value==\'Nom...\') this.value = \'\'', 'onblur': 'if (this.value==\'\') this.value = \'Nom...\''} }) }}
+          {{ form_widget(form_contact.email, {'attr': {'value':'Email...','class': 'text','onfocus': 'if (this.value==\'Email...\') this.value = \'\'', 'onblur': 'if (this.value==\'\') this.value = \'Email...\''} }) }}
+          {{ form_widget(form_contact.sujet, {'attr': {'value':'Sujet...','class': 'text','onfocus': 'if (this.value==\'Sujet...\') this.value = \'\'', 'onblur': 'if (this.value==\'\') this.value = \'Sujet...\''} }) }}
+   
+
+
+
+								</div>
+								<div class="text2">
+				                          {{ form_widget(form_contact.message, {'attr': {'value':'Message...','class':'text','onfocus': 'if (this.value==\'Message...\') this.value = \'\'', 'onblur': 'if (this.value==\'\') this.value = \'Message...\''} }) }}
+
+                                                                </div>
+				               <span><input type="submit" class="" value="Submit"></span>
+				                <div class="clear"></div>
+				               </div>
+				           </form>
+							</div>
+			</div>
+		</div>
+		<!----//End-contact---->
+
+
+
+
+{%endblock%}
+
+
+

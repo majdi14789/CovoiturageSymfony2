@@ -1,0 +1,7 @@
+parameters:
+#    team_builder_covoiturage.example.class: TeamBuilder\CovoiturageBundle\Example
+
+services:
+#    team_builder_covoiturage.example:
+#        class: %team_builder_covoiturage.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

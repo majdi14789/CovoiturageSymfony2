@@ -1,0 +1,6 @@
+{# empty Twig template #}
+<form  action="{{path('Reclamation_Conducteur', {id: idTrajet, idR: idAdhCon })}}" method="POST" >
+cause :{{ form_widget(form_reclamation.cause)}}
+Description :{{ form_widget(form_reclamation.description)}}
+<input type="submit" value="Ajouter" />
+</form>

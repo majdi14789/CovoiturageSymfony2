@@ -1,0 +1,142 @@
+{# empty Twig template #}
+
+{# empty Twig template #}
+{% extends "TeamBuilderCovoiturageBundle::layout.html.twig"%}
+
+{%block Erasebody%}
+
+<style>
+.buttonOK {
+background: #2ecc71;
+color: #FFF;
+padding: .9em 3em;
+display: inline-block;
+text-transform: uppercase;
+transition: 0.5s all;
+-webkit-transition: 0.5s all;
+-moz-transition: 0.5s all;
+-o-transition: 0.5s all;
+border-radius: 0.3em;
+-webkit-border-radius: 0.3em;
+-moz-border-radius: 0.3em;
+-o-border-radius: 0.3em;
+font-size: 0.875em;
+border-top: none;
+border-right: none;
+border-left: none;
+border-bottom: 4px solid #2A323A;
+outline: none;
+cursor: pointer;
+font-family: 'Open Sans', sans-serif;
+}
+</style>
+<script src="{{asset('js/etoiles.js')}}"></script>
+<link rel="stylesheet" href="{{asset('css/etoiles.css')}}" type="text/css" />
+<div class="content_center">
+{% if app.session and app.session.flashbag %}
+{% for label, flashes in app.session.flashbag.all %}
+    {% for flash in flashes %}
+        <li class="alert alert-{{ label }} alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{ flash }}
+        </li>
+    {% endfor %}
+{% endfor %}
+{%  endif %}
+
+<form action="{{ path('Evaluation_ajouter', {id: id}) }}"  method="POST">
+    {{ form_widget(form_evaluation._token ) }}
+	Note
+	<br/><br/>
+	<ul class="notes-echelle js">
+			<li class="">
+				<label for="note01" title="Note : 1 sur 20">1</label>
+				<input type="radio" name="note" id="note01" value="1">
+			</li>
+			<li class="">
+				<label for="note02" title="Note : 2 sur 20">2</label>
+				<input type="radio" name="note" id="note02" value="2">
+			</li>
+			<li class="">
+				<label for="note03" title="Note : 3 sur 20">3</label>
+				<input type="radio" name="note" id="note03" value="3">
+			</li>
+			<li class="">
+				<label for="note04" title="Note : 4 sur 20">4</label>
+				<input type="radio" name="note" id="note04" value="4">
+			</li>
+			<li class="">
+				<label for="note05" title="Note : 5 sur 20">5</label>
+				<input type="radio" name="note" id="note05" value="5">
+			</li>
+			<li class="">
+				<label for="note06" title="Note : 6 sur 20">6</label>
+				<input type="radio" name="note" id="note06" value="6">
+			</li>
+			<li class="">
+				<label for="note07" title="Note : 7 sur 20">7</label>
+				<input type="radio" name="note" id="note07" value="7">
+			</li>
+			<li class="">
+				<label for="note08" title="Note : 8 sur 20">8</label>
+				<input type="radio" name="note" id="note08" value="8">
+			</li>
+			<li class="note-checked">
+				<label for="note09" title="Note : 9 sur 20">9</label>
+				<input type="radio" name="note" id="note09" value="9">
+			</li>
+			<li class="note-off">
+				<label for="note10" title="Note : 10 sur 20">10</label>
+				<input type="radio" name="note" id="note10" value="10">
+			</li>
+			<li class="note-off">
+				<label for="note11" title="Note : 11 sur 20">11</label>
+				<input type="radio" name="note" id="note11" value="11">
+			</li>
+			<li class="note-off">
+				<label for="note12" title="Note : 12 sur 20">12</label>
+				<input type="radio" name="note" id="note12" value="12">
+			</li>
+			<li class="note-off">
+				<label for="note13" title="Note : 15 sur 20">13</label>
+				<input type="radio" name="note" id="note13" value="13">
+			</li>
+			<li class="note-off">
+				<label for="note14" title="Note : 14 sur 20">14</label>
+				<input type="radio" name="note" id="note14" value="14">
+			</li>
+			<li class="note-off">
+				<label for="note015" title="Note : 15 sur 20">15</label>
+				<input type="radio" name="note" id="note015" value="15">
+			</li>
+			<li class="note-off">
+				<label for="note16" title="Note : 16 sur 20">16</label>
+				<input type="radio" name="note" id="note16" value="16">
+			</li>
+			<li class="note-off">
+				<label for="note17" title="Note : 17 sur 20">17</label>
+				<input type="radio" name="note" id="note17" value="17">
+			</li>
+			<li class="note-off">
+				<label for="note18" title="Note : 18 sur 20">18</label>
+				<input type="radio" name="note" id="note18" value="18">
+			</li>
+			<li class="note-off">
+				<label for="note19" title="Note : 19 sur 20">19</label>
+				<input type="radio" name="note" id="note19" value="19">
+			</li>
+			<li class="note-off">
+				<label for="note20" title="Note : 20 sur 20">20</label>
+				<input type="radio" name="note" id="note20" value="20">
+			</li>
+		</ul>
+		<br/><br/>
+		{{ form_label(form_evaluation.commentaire) }}
+		<br/>
+		{{ form_widget(form_evaluation.commentaire) }}
+    <div>
+        <input class="buttonOK" type="submit" value="Evaluer" />
+    </div>
+</form>
+</div>
+{% endblock %}

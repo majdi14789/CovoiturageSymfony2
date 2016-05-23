@@ -1,0 +1,153 @@
+{# empty Twig template #}
+{% extends "TestBundle::layout.html.twig"  %}
+{% block Erasebody %}
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+ <script>
+				  $(function($) {
+				    $( "#datepicker" ).datepicker({
+                                    dateFormat : 'yy-'+'mm'+'-dd',
+	                            minDate : 0,  
+                                    });
+				  });
+              
+		
+		</script>
+<script lang="javascrpt">
+    function test(){
+        
+        //alert("ok");
+    }
+    </script>
+    
+    
+    
+    
+<script src="{{asset('js/jquery-ui-1.10.4.custom.min.js')}}"></script>
+                     
+<link href="{{asset('css/jquery-ui-1.10.4.custom.css')}}" rel="stylesheet">
+                    
+               <link href="{{asset('css/jquery-ui.css')}}" rel="stylesheet" title='numberOne'>
+
+
+                     
+                     
+                <script>
+                             
+        var availableTags = ["Ariana","Tunis","Sfax","Grombalia","Nabeul","Sousse","Gafsa","Gabes","Hammam-lif","Monastir","Douz","Tabarka","Beja"];
+
+    $(function($) {
+		
+		$( "#villeDepartText" ).autocomplete({
+			source: availableTags
+		});
+		
+
+		
+// Hover states on the static widgets
+		$( "#dialog-link, #icons li" ).hover(
+			function($) {
+				$( this ).addClass( "ui-state-hover" );
+			},
+			function($) {
+				$( this ).removeClass( "ui-state-hover" );
+			}
+		);
+	});
+		
+                
+                
+                                         $(function($) {
+      
+              		$( "#villearriveeText" ).autocomplete({
+			source: availableTags
+		});
+		
+
+		
+// Hover states on the static widgets
+		$( "#dialog-link, #icons li" ).hover(
+			function($) {
+				$( this ).addClass( "ui-state-hover" );
+			},
+			function($) {
+				$( this ).removeClass( "ui-state-hover" );
+			}
+		);
+	});
+                
+                
+      
+                                  </script>
+            
+    
+    
+   <div class="find-place">
+			<div class="wrap">
+				<div class="p-h">
+					<span>Trouvez</span>
+					<label>Votre Trajet</label>
+				</div> 
+ <div class="p-ww" id='reservation'>
+     
+	<form method="get" action="{{ path('afficheTrajet')}}">
+	<span> Depart :</span>
+	  <input class="dest" type="text" id="villeDepartText" name="villeDepartText"  value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Distination';}">
+                                                
+             <span> Destination :</span>
+	     <input class="dest" type="text" id="villearriveeText" name="villearriveeText" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Distination';}">
+                                               
+             <span>Date :</span>
+	     <input class="dateText" id="datepicker" name="datepicker" type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Select date';}">
+	     <input type="submit" value="Rechercher" />
+		</form>
+				</div>  
+                            <div class="clear"> </div>
+                        </div>
+   </div>
+    
+    <table align="center" width="98%" class="styleTable">
+    <tr>
+        
+         
+        <th style='background:#2C3E50 !important'><div style="color: #9FB0C0 !important; font-size:  1em !important;"><span>Ville de depart</span></div></th>
+        <th style='background:#2C3E50 !important'>Ville de arivee</th>
+        <th style='background:#2C3E50 !important'>le jour</th>
+        <th style='background:#2C3E50 !important'>Heure</th>
+        <th style='background:#2C3E50 !important'>Nbr Placest</th>
+        <th style='background:#2C3E50 !important'>Prix</th>
+        <th style='background:#2C3E50 !important'></th>
+        
+    </tr>
+{%  for tra in trajets   %}
+    {% if (tra.places!=0) %}
+    <tr>
+        
+        
+        <td >{{ tra.villeDepart  }}</td>
+        <td> {{ tra.villeArrivee  }}</td>
+        <td>{{ tra.jours|date("d-m-Y")  }}</td>
+        <td>{{ tra.heure  }}</td>
+        <td>{{ tra.places  }}</td>
+        <td>{{ tra.prix  }}</td>
+       
+        <td>
+ 
+            
+         <a href = " {{ path('reserver', {idConducteur: tra.idConducteur.id,idTrajet:tra.idTrajet }) }} "> Reserver </a>   
+        </td>
+        
+      
+    </tr>
+    {%endif%}
+{%endfor%}
+
+</table>
+
+    <br><br><br><br>
+
+{%endblock%}
+
+{% block Erasefooter %}
+    {%endblock%}
+
+

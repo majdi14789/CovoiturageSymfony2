@@ -1,0 +1,32 @@
+{% extends "TeamBuilderCovoiturageBundle::layout.html.twig"%}
+
+{% block Erasebody %}
+<div class="content_center">
+
+<table align="center" width="95%" class="styleTable">
+    <tr>
+        <th style='background:#2C3E50 !important'></th>
+		<th style='background:#2C3E50 !important'><span>Nom</span></th>
+        <th style='background:#2C3E50 !important'>Email</th>
+        <th style='background:#2C3E50 !important'>Objet</th>
+        <th style='background:#2C3E50 !important'>Message</th>
+        <th style='background:#2C3E50 !important'></th>
+    </tr>
+	
+	{% set i = 1   %}
+	{% for c in contacts   %}
+   
+    <tr>        
+        <td >{{ i }}</td>
+        <td >{{ c.name  }}</td>
+        <td> {{ c.email  }}</td>
+         <td>{{ c.sujet  }}</td>
+        <td>{{ c.message  }}</td>
+        <td></td>
+    </tr>
+   
+	{% set i = i+1   %}
+	{%endfor%}
+</table>
+</div>
+{% endblock %}
